@@ -1,0 +1,761 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Vue资金管理系统 | 小窝</title><meta name="author" content="lhr"><meta name="copyright" content="lhr"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目概述   &amp;emsp;&amp;emsp;该项目是基于Vue和NodeJS技术实现的资金管理系统，原项目出自“米修教育”于2017年发布的资金管理系统视频教程。项目需求是开发一个管理资金的后台系统，具备基本的注册登录功能和对资金的增删查改功能，模拟企业管理业务。通过开发该项目，对自身所学的Vue和NodeJS知识进行复习，并进行一次整合应用，巩固编程水平，积累项目经验。   &amp;emsp;&amp;emsp;附">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue资金管理系统">
+<meta property="og:url" content="https://l-204.github.io/vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8d8ced66.html">
+<meta property="og:site_name" content="小窝">
+<meta property="og:description" content="项目概述   &amp;emsp;&amp;emsp;该项目是基于Vue和NodeJS技术实现的资金管理系统，原项目出自“米修教育”于2017年发布的资金管理系统视频教程。项目需求是开发一个管理资金的后台系统，具备基本的注册登录功能和对资金的增删查改功能，模拟企业管理业务。通过开发该项目，对自身所学的Vue和NodeJS知识进行复习，并进行一次整合应用，巩固编程水平，积累项目经验。   &amp;emsp;&amp;emsp;附">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://l-204.github.io/imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/background.png">
+<meta property="article:published_time" content="2023-09-30T13:04:19.000Z">
+<meta property="article:modified_time" content="2023-10-01T06:44:23.989Z">
+<meta property="article:author" content="lhr">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="NodeJS">
+<meta property="article:tag" content="后台管理系统">
+<meta property="article:tag" content="开发日志">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://l-204.github.io/imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/background.png"><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="https://l-204.github.io/vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8d8ced66.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vue资金管理系统',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-01 14:44:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/images/"><i class="fa-fw fas fa-image"></i><span> 图片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/background.png')"><nav id="nav"><span id="blog-info"><a href="/" title="小窝"><span class="site-name">小窝</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/images/"><i class="fa-fw fas fa-image"></i><span> 图片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vue资金管理系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-30T13:04:19.000Z" title="发表于 2023-09-30 21:04:19">2023-09-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-01T06:44:23.989Z" title="更新于 2023-10-01 14:44:23">2023-10-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue资金管理系统"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="项目概述"><a href="#项目概述" class="headerlink" title="项目概述"></a>项目概述</h1> </br>
+
+<p>&emsp;&emsp;该项目是基于Vue和NodeJS技术实现的资金管理系统，原项目出自“米修教育”于2017年发布的资金管理系统视频教程。项目需求是开发一个管理资金的后台系统，具备基本的注册登录功能和对资金的增删查改功能，模拟企业管理业务。通过开发该项目，对自身所学的Vue和NodeJS知识进行复习，并进行一次整合应用，巩固编程水平，积累项目经验。</p>
+</br>
+
+<p>&emsp;&emsp;附视频链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R341167Fw/?spm_id_from=333.337.search-card.all.click">Vue+node.js 全栈项目-资金管理系统带权限——-附源码_哔哩哔哩_bilibili</a></p>
+ </br>
+
+</br>
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">前端</td>
+<td align="center">Vue CLI3.0 + CSS + JS + Element Plus</td>
+</tr>
+<tr>
+<td align="center">后端</td>
+<td align="center">NodeJS + Postman</td>
+</tr>
+<tr>
+<td align="center">数据库</td>
+<td align="center">MongoDB</td>
+</tr>
+<tr>
+<td align="center">服务器</td>
+<td align="center">Express</td>
+</tr>
+<tr>
+<td align="center">开发工具</td>
+<td align="center">Visual Studio Code</td>
+</tr>
+<tr>
+<td align="center">项目启动</td>
+<td align="center">2023.09.05</td>
+</tr>
+<tr>
+<td align="center">项目完成</td>
+<td align="center">2023.09.09</td>
+</tr>
+<tr>
+<td align="center">项目类别</td>
+<td align="center">课程项目</td>
+</tr>
+</tbody></table>
+ </br>
+
+ </br>
+
+<h1 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h1></br>
+
+<center>Node接口搭建：2023.09.05 —— 2023.09.06</center>
+
+<center>VueCli3.0全栈：2023.09.07 —— 2023.09.09</center>
+
+<center>项目优化：2023.09.09</center>
+
+</br>
+
+</br>
+
+<table>
+<thead>
+<tr>
+<th align="center">2023.09.05</th>
+<th align="center">2023.09.06</th>
+<th align="center">2023.09.07</th>
+<th align="center">2023.09.08</th>
+<th align="center">2023.09.09</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Node接口搭建-express搭建服务器</td>
+<td align="center">Node接口搭建-搭建路由和数据模型</td>
+<td align="center">Vue全栈-前后端连载</td>
+<td align="center">VueCli3.0全栈-路由守卫和token过期处理</td>
+<td align="center">VueCli3.0全栈-设置左侧导航栏</td>
+</tr>
+<tr>
+<td align="center">Node接口搭建-连接MongoDB数据库</td>
+<td align="center">Node接口搭建-搭建注册接口并存储数据</td>
+<td align="center">VueCli3.0全栈-前端页面的准备工作</td>
+<td align="center">VueCli3.0全栈-解析token并存储到vuex中</td>
+<td align="center">VueCli3.0全栈-展示资金管理页面</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-使用全球公认头像gravatar</td>
+<td align="center">VueCli3.0全栈-设置Register和404组件</td>
+<td align="center">VueCli3.0全栈-设计顶部导航</td>
+<td align="center">VueCli3.0全栈-细节内容调整</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-搭建登录接口</td>
+<td align="center">VueCli3.0全栈-搭建element注册表单</td>
+<td align="center">VueCli3.0全栈-设置下拉菜单</td>
+<td align="center">VueCli3.0全栈-添加按钮</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-使用jwt实现token</td>
+<td align="center">VueCli3.0全栈-验证表单和按钮</td>
+<td align="center">VueCli3.0全栈-设置首页和个人信息</td>
+<td align="center">VueCli3.0全栈-完成添加功能</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-使用password-jwt验证token</td>
+<td align="center">VueCli3.0全栈-加载动画和消息提醒</td>
+<td align="center">VueCli3.0全栈-设置左侧导航栏</td>
+<td align="center">VueCli3.0全栈-编辑和删除</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-增加身份字段及接口调试</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">VueCli3.0全栈-实现分页结构</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-数据信息接口介绍</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">VueCli3.0全栈-实现分页功能</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-配置信息接口</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">VueCli3.0全栈-实现筛选功能</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-添加信息接口</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">项目优化（2.0）</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-获取所有以及单个信息</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Node接口搭建-编辑和删除信息接口</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+ </br>
+
+</br>
+
+<h1 id="功能和特性"><a href="#功能和特性" class="headerlink" title="功能和特性"></a>功能和特性</h1></br>
+
+<ul>
+<li><p>注册和登录功能</p>
+</br>
+</li>
+<li><p>对资金的增删查改功能</p>
+</br>
+</li>
+<li><p>根据日期筛选记录功能</p>
+</br>
+</li>
+<li><p>对记录进行分页功能</p>
+</br>
+</li>
+<li><p>注册登录时会有弹窗提示，页面交互性较好</p>
+</br>
+</li>
+<li><p>应用npm包管理工具和模块化设计，方便后期维护</p>
+</br>
+</li>
+<li><p>设计了404界面，页面图标并优化其他细节，页面美观</p>
+</br>
+</li>
+<li><p>管理员和普通员工权限区分，普通员工只有查看权限，没有增删改的权限，可靠性较好</p>
+</br>
+</li>
+<li><p>设计了密码加密和验证机制，退出登录时会清空本地cookie，需要重新登录验证，且未登录时会有路由守卫拦截，安全性较高</p>
+</li>
+</ul>
+ </br>
+
+</br>
+
+ </br>
+
+<ul>
+<li><p>项目文件大小约300M，不利于交接</p>
+</br>
+</li>
+<li><p>功能单一，只有增删查改，没有生成图表和数据分析等功能，和实际项目相比仍有差距</p>
+</br>
+</li>
+<li><p>404界面只在找不到对应网址才会显示，当注册登录等报错时不会跳转，而是直接显示报错</p>
+</br>
+</li>
+<li><p>数据库不在本地存储，每次连接数据库都要到官网登录并添加正确IP才能连接成功，效率低</p>
+</li>
+</ul>
+ </br>
+
+ </br>
+
+<h1 id="技术架构"><a href="#技术架构" class="headerlink" title="技术架构"></a>技术架构</h1></br>
+
+<ul>
+<li><h2 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h2></li>
+<li><p>client：Vue Cli3.0项目文件目录</p>
+</li>
+<li><p>config：配置文件</p>
+</li>
+<li><p>models：模型文件</p>
+</li>
+<li><p>node_modules：npm包</p>
+</li>
+<li><p>routes：路由文件</p>
+</li>
+<li><p>server.js：服务器文件</p>
+</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E7%BB%93%E6%9E%84/node-vue-ele-app.png" alt="node-vue-ele-app"></p>
+</br>
+
+<ul>
+<li><h2 id="config包"><a href="#config包" class="headerlink" title="config包"></a>config包</h2></li>
+<li><p>key.js：连接mongoDB数据库</p>
+</li>
+<li><p>password.js：实现密码的加密和验证机制</p>
+</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E7%BB%93%E6%9E%84/config.png" alt="config"></p>
+</br>
+
+<ul>
+<li><h2 id="models包"><a href="#models包" class="headerlink" title="models包"></a>models包</h2></li>
+<li><p>User.js：用户信息模型</p>
+</li>
+<li><p>Profile.js：资金信息模型</p>
+</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E7%BB%93%E6%9E%84/models.png" alt="models"></p>
+</br>
+
+<ul>
+<li><h2 id="routes包"><a href="#routes包" class="headerlink" title="routes包"></a>routes包</h2></li>
+<li><p>users.js：发送用户注册和登录的请求，并接收响应</p>
+</li>
+<li><p>profile.js：发送对资金管理进行增删改查的请求，并接收响应</p>
+</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E7%BB%93%E6%9E%84/routes.png" alt="routes"></p>
+</br>
+
+<ul>
+<li><h2 id="client包"><a href="#client包" class="headerlink" title="client包"></a>client包</h2></li>
+<li><p>public包：存放CSS样式等公共文件</p>
+</li>
+<li><p>node_modules：npm包</p>
+</li>
+<li><p>App.vue：页面文件的入口，是页面资源的首加载项</p>
+</li>
+<li><p>vue.config.js：发送请求的配置文件，实现跨域</p>
+</li>
+<li><p>src包：存放大部分组件，是Vue项目的核心</p>
+</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E7%BB%93%E6%9E%84/client.png" alt="client"></p>
+</br>
+
+<ul>
+<li><h2 id="src包"><a href="#src包" class="headerlink" title="src包"></a>src包</h2></li>
+<li><p>assets包：存放静态资源，这里只有图片</p>
+</li>
+<li><p>components包：存放组件，这里只有导航栏组件</p>
+</li>
+<li><p>plugins包：存放插件，这里只有Element Plus插件</p>
+</li>
+<li><p>router包：存放路由配置文件</p>
+</li>
+<li><p>store包：存放Vue应用状态</p>
+</li>
+<li><p>views包：存放页面</p>
+</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E7%BB%93%E6%9E%84/src.png" alt="src"></p>
+</br>
+
+<h1 id="关键问题与挑战"><a href="#关键问题与挑战" class="headerlink" title="关键问题与挑战"></a>关键问题与挑战</h1></br>
+
+<h2 id="【mongoose报错】Make-sure-your-current-IP-address-is-on-your-Atlas-cluster‘s-IP-whitelist"><a href="#【mongoose报错】Make-sure-your-current-IP-address-is-on-your-Atlas-cluster‘s-IP-whitelist" class="headerlink" title="【mongoose报错】Make sure your current IP address is on your Atlas cluster‘s IP whitelist"></a>【mongoose报错】Make sure your current IP address is on your Atlas cluster‘s IP whitelist</h2></br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%871.png" alt="图片1"></p>
+</br>
+
+<ul>
+<li>进入mongoose，打开network access：</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%872.png" alt="图片2"></p>
+</br>
+
+<ul>
+<li>点击添加允许连接的新的ip地址：</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%873.png" alt="图片3"></p>
+</br>
+
+<ul>
+<li>选择本机ip地址，会自动检测并给出本机ip地址，点击确认，成功添加。</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%874.png" alt="图片4"></p>
+</br>
+
+<ul>
+<li>注：主机IP Address会时刻变化，当无法连接时，尝试重新添加currentIP即可解决。</li>
+</ul>
+</br>
+
+<h2 id="【请求报错】实现删除接口时可以删除数据，但无法显示删除内容，并报错"><a href="#【请求报错】实现删除接口时可以删除数据，但无法显示删除内容，并报错" class="headerlink" title="【请求报错】实现删除接口时可以删除数据，但无法显示删除内容，并报错"></a>【请求报错】实现删除接口时可以删除数据，但无法显示删除内容，并报错</h2></br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%875.png" alt="图片5"></p>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%876.png" alt="图片6"></p>
+</br>
+
+<ul>
+<li>原因是发送删除请求后会清空数据，此时.save()方法无法获取到已删除的数据，因此删除.save()方法，并将.then内的profile回调改为request.json(profile)即可。</li>
+</ul>
+</br>
+
+<h2 id="【引入报错】引入element-ui时报错"><a href="#【引入报错】引入element-ui时报错" class="headerlink" title="【引入报错】引入element-ui时报错"></a>【引入报错】引入element-ui时报错</h2></br>
+
+<ul>
+<li>原因是vue3不支持element-ui，需要安装element-plus删除element-ui，重新安装element-plus即可</li>
+</ul>
+</br>
+
+<h2 id="【配置报错】vue3报错-Catch-all-routes-“-”-must-now-be-defined-using-a-param-with-a-custom-regexp"><a href="#【配置报错】vue3报错-Catch-all-routes-“-”-must-now-be-defined-using-a-param-with-a-custom-regexp" class="headerlink" title="【配置报错】vue3报错 Catch all routes (“*”) must now be defined using a param with a custom regexp"></a>【配置报错】vue3报错 Catch all routes (“*”) must now be defined using a param with a custom regexp</h2></br>
+
+<ul>
+<li>vue3对404配置进行了修改，必须要使用正则匹配，因为Vue Router不再使用path-to-regexp，而是实现了自己的解析系统，该系统允许路由排名并启用动态路由，因此修改404路由修改为下图即可</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%877.png" alt="图片7"></p>
+</br>
+
+<h2 id="【配置报错】配置vue-config-js时报错，挂载axios时报错"><a href="#【配置报错】配置vue-config-js时报错，挂载axios时报错" class="headerlink" title="【配置报错】配置vue.config.js时报错，挂载axios时报错"></a>【配置报错】配置vue.config.js时报错，挂载axios时报错</h2></br>
+
+<ul>
+<li>vue.config.js配置信息有误，经检查发现为跨域请求地址target属性结尾漏了&#x2F;，修改配置文件信息后即可</li>
+</ul>
+</br>
+
+<h2 id="【引入报错】Element-ui-NavMenu-导航菜单-template中的内容不显示"><a href="#【引入报错】Element-ui-NavMenu-导航菜单-template中的内容不显示" class="headerlink" title="【引入报错】Element ui NavMenu 导航菜单 template中的内容不显示"></a>【引入报错】Element ui NavMenu 导航菜单 template中的内容不显示</h2></br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%878.png" alt="图片8"></p>
+</br>
+
+<ul>
+<li>原因是element ui和element plus标签属性slot语法不同，在对应的template中加v-slot:title即可</li>
+</ul>
+</br>
+
+<h2 id="【样式报错】无法清除element表格溢出的空白，同时还有padding-16px的右边距失效"><a href="#【样式报错】无法清除element表格溢出的空白，同时还有padding-16px的右边距失效" class="headerlink" title="【样式报错】无法清除element表格溢出的空白，同时还有padding:16px的右边距失效"></a>【样式报错】无法清除element表格溢出的空白，同时还有padding:16px的右边距失效</h2></br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%879.png" alt="图片9"></p>
+</br>
+
+<ul>
+<li>将CSS代码中的.container{width:100%}改为80%，并将height改为.rightContainer{height:100%}</li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%8710.png" alt="图片10"></p>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%8711.png" alt="图片11"></p>
+</br>
+
+<h1 id="测试与质量保证"><a href="#测试与质量保证" class="headerlink" title="测试与质量保证"></a>测试与质量保证</h1></br>
+
+<ul>
+<li><h2 id="注册测试：请求成功后返回注册信息"><a href="#注册测试：请求成功后返回注册信息" class="headerlink" title="注册测试：请求成功后返回注册信息"></a>注册测试：请求成功后返回注册信息</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/%E6%B3%A8%E5%86%8C%E6%B5%8B%E8%AF%95.png" alt="注册测试"></p>
+</br>
+
+<ul>
+<li><h2 id="登录测试：请求成功后返回登录信息和token"><a href="#登录测试：请求成功后返回登录信息和token" class="headerlink" title="登录测试：请求成功后返回登录信息和token"></a>登录测试：请求成功后返回登录信息和token</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/%E7%99%BB%E5%BD%95%E6%B5%8B%E8%AF%95.png" alt="登录测试"></p>
+</br>
+
+<ul>
+<li><h2 id="查看个人信息测试：普通员工和管理员都有查看个人信息权限，请求成功后返回个人信息"><a href="#查看个人信息测试：普通员工和管理员都有查看个人信息权限，请求成功后返回个人信息" class="headerlink" title="查看个人信息测试：普通员工和管理员都有查看个人信息权限，请求成功后返回个人信息"></a>查看个人信息测试：普通员工和管理员都有查看个人信息权限，请求成功后返回个人信息</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/%E6%9F%A5%E7%9C%8B%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%B5%8B%E8%AF%95.png" alt="查看个人信息测试"></p>
+</br>
+
+<ul>
+<li><h2 id="查看资金信息测试：普通员工和管理员都有查看资金信息权限，请求成功后返回资金信息"><a href="#查看资金信息测试：普通员工和管理员都有查看资金信息权限，请求成功后返回资金信息" class="headerlink" title="查看资金信息测试：普通员工和管理员都有查看资金信息权限，请求成功后返回资金信息"></a>查看资金信息测试：普通员工和管理员都有查看资金信息权限，请求成功后返回资金信息</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/%E6%9F%A5%E7%9C%8B%E8%B5%84%E9%87%91%E4%BF%A1%E6%81%AF%E6%B5%8B%E8%AF%95.png" alt="查看资金信息测试"></p>
+</br>
+
+<ul>
+<li><h2 id="普通员工进行增删改测试：普通员工没有这些权限，因此请求失败"><a href="#普通员工进行增删改测试：普通员工没有这些权限，因此请求失败" class="headerlink" title="普通员工进行增删改测试：普通员工没有这些权限，因此请求失败"></a>普通员工进行增删改测试：普通员工没有这些权限，因此请求失败</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/%E6%99%AE%E9%80%9A%E5%91%98%E5%B7%A5%E8%BF%9B%E8%A1%8C%E5%A2%9E%E5%88%A0%E6%94%B9%E6%B5%8B%E8%AF%95.png" alt="普通员工进行增删改测试"></p>
+</br>
+
+<ul>
+<li><h2 id="管理员进行添加测试：管理员拥有添加权限，请求成功后返回添加的商品信息"><a href="#管理员进行添加测试：管理员拥有添加权限，请求成功后返回添加的商品信息" class="headerlink" title="管理员进行添加测试：管理员拥有添加权限，请求成功后返回添加的商品信息"></a>管理员进行添加测试：管理员拥有添加权限，请求成功后返回添加的商品信息</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/%E7%AE%A1%E7%90%86%E5%91%98%E8%BF%9B%E8%A1%8C%E6%B7%BB%E5%8A%A0%E6%B5%8B%E8%AF%95.png" alt="管理员进行添加测试"></p>
+</br>
+
+<ul>
+<li><h2 id="管理员进行删除测试：管理员拥有删除权限，请求成功后返回删除的商品信息"><a href="#管理员进行删除测试：管理员拥有删除权限，请求成功后返回删除的商品信息" class="headerlink" title="管理员进行删除测试：管理员拥有删除权限，请求成功后返回删除的商品信息"></a>管理员进行删除测试：管理员拥有删除权限，请求成功后返回删除的商品信息</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/%E7%AE%A1%E7%90%86%E5%91%98%E8%BF%9B%E8%A1%8C%E5%88%A0%E9%99%A4%E6%B5%8B%E8%AF%95.png" alt="管理员进行删除测试"></p>
+</br>
+
+<ul>
+<li><h2 id="管理员进行编辑测试：管理员拥有编辑权限，请求成功后返回编辑后的商品信息"><a href="#管理员进行编辑测试：管理员拥有编辑权限，请求成功后返回编辑后的商品信息" class="headerlink" title="管理员进行编辑测试：管理员拥有编辑权限，请求成功后返回编辑后的商品信息"></a>管理员进行编辑测试：管理员拥有编辑权限，请求成功后返回编辑后的商品信息</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/%E7%AE%A1%E7%90%86%E5%91%98%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%BE%91%E6%B5%8B%E8%AF%95.png" alt="管理员进行编辑测试"></p>
+</br>
+
+</br>
+
+<h1 id="成果与效益"><a href="#成果与效益" class="headerlink" title="成果与效益"></a>成果与效益</h1></br>
+
+<ul>
+<li><h2 id="资金管理系统1-0"><a href="#资金管理系统1-0" class="headerlink" title="资金管理系统1.0"></a>资金管理系统1.0</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1.0/%E6%B3%A8%E5%86%8C%E7%95%8C%E9%9D%A2.png" alt="注册界面"></p>
+</br>
+
+<center>图7.1.1 - 注册界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1.0/%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2.png" alt="登录界面"></p>
+</br>
+
+<center>图7.1.2 - 登录界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1.0/%E9%A6%96%E9%A1%B5.png" alt="首页"></p>
+</br>
+
+<center>图7.1.3 - 首页界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1.0/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.png" alt="个人信息"></p>
+</br>
+
+<center>图7.1.4 - 个人信息界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1.0/%E8%B5%84%E9%87%91%E6%B5%81%E6%B0%B4.png" alt="资金流水"></p>
+</br>
+
+<center>图7.1.5 - 资金管理界面</center>
+
+</br>
+
+</br>
+
+<ul>
+<li><h2 id="资金管理系统2-0"><a href="#资金管理系统2-0" class="headerlink" title="资金管理系统2.0"></a>资金管理系统2.0</h2></li>
+</ul>
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2.0/%E6%B3%A8%E5%86%8C%E7%95%8C%E9%9D%A2.png" alt="注册界面"></p>
+</br>
+
+<center>图7.2.1 - 注册界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2.0/%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2.png" alt="登录界面"></p>
+</br>
+
+<center>图7.2.2 - 登录界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2.0/%E9%A6%96%E9%A1%B5.png" alt="首页"></p>
+</br>
+
+<center>图7.2.3 - 首页界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2.0/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.png" alt="个人信息"></p>
+</br>
+
+<center>图7.2.4 - 个人信息界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2.0/%E8%B5%84%E9%87%91%E6%B5%81%E6%B0%B4.png" alt="资金流水"></p>
+</br>
+
+<center>图7.2.5 - 资金管理界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2.0/%E6%B7%BB%E5%8A%A0.png" alt="添加"></p>
+</br>
+
+<center>图7.2.6 - 添加界面</center>
+
+</br>
+
+<p><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC/%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2.0/404%E7%95%8C%E9%9D%A2.png" alt="404界面"></p>
+</br>
+
+<center>图7.2.7 - 404界面</center>
+
+</br>
+
+</br>
+
+<h1 id="开发总结"><a href="#开发总结" class="headerlink" title="开发总结"></a>开发总结</h1></br>
+
+<p>&emsp;&emsp;在这次项目开发中，收获了不少开发经验，例如用element组件代替以往的CSS样式对UI进行优化，复习了ajax请求里的axios内容，学会了利用jwt代替JavaServlet实现数据加密，用MongoDB数据库代替MySQL数据库，利用Postman进行请求测试，熟悉了Vue开发流程等等。</p>
+</br>
+
+<p>&emsp;&emsp;不过这次项目大部分都是照着视频进行复刻，除了2.0版本是我优化的，其他大部分知识都是照搬视频内容，如果要让我独立设计一个项目，估计还做不到，即使开发出来了估计也不太规范，这说明我还需要继续积累项目经验，熟悉开发流程和项目规范，前端学习之路对我来说依然任重道远。</p>
+</br>
+
+<p>&emsp;&emsp;而且由于项目是17年的，有点老了，让我踩了不少坑，比如视频中的Element组件，视频项目是Vue CLI2.0，我的项目是Vue CLI3.0，不支持Element UI组件，需要用Element Plus，视频里的却是Element UI，所以我需要自行对接，因为是第一次接触Element组件，在对接过程中花费了不少时间。其次是Gravatar包，视频里可以根据Gravatar官网获取动态头像，但我开发时Gravatar网站已经无法访问，只能用静态资源代替视频里的动态头像。还有挂载Axios，当时教程只是随便找了个配置文件，没有配置文件的讲解，导致我在发送Ajax请求时一直报错，调试了一整天才解决。这也是跟着视频开发项目的弊端，对方开发的时候很顺利，但自己对接的时候就会有一堆问题。这也说明学技术要与时俱进，不能照本宣科，要学会将知识内化于心，才能减少问题，说来说去还是学的不够呗。</p>
+</br>
+
+<p>&emsp;&emsp;最后，这个项目对比上一个JSP项目其实已经进步了不少了，开发时间只花了一周，质量也远远优于上一个项目，虽然踩了不少坑，但也收获了不少知识，还是很让人振奋的，之前一直因为缺少项目实战，一直心里没什么底，特别焦虑，现在随着手里的项目慢慢变多，整个人越来越自信了。加油，争取做到早日独立开发，找到一份满意的实习！！！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://l-204.github.io">lhr</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://l-204.github.io/vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8d8ced66.html">https://l-204.github.io/vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8d8ced66.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://l-204.github.io" target="_blank">小窝</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vue/">Vue</a><a class="post-meta__tags" href="/tags/NodeJS/">NodeJS</a><a class="post-meta__tags" href="/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">后台管理系统</a><a class="post-meta__tags" href="/tags/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/">开发日志</a></div><div class="post_share"><div class="social-share" data-image="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/background.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B0%8F%E7%A8%8B%E5%BA%8F/9809d611.html" title="云音乐小程序"><img class="cover" src="/../imgs/%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B0%8F%E7%A8%8B%E5%BA%8F/background.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">云音乐小程序</div></div></a></div><div class="next-post pull-right"><a href="/jsp%E9%93%B6%E8%A1%8C%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/e28790d7.html" title="JSP银行管理系统"><img class="cover" src="/../imgs/JSP%E9%93%B6%E8%A1%8C%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/background.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JSP银行管理系统</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B0%8F%E7%A8%8B%E5%BA%8F/9809d611.html" title="云音乐小程序"><img class="cover" src="/../imgs/%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B0%8F%E7%A8%8B%E5%BA%8F/background.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-30</div><div class="title">云音乐小程序</div></div></a></div><div><a href="/jsp%E9%93%B6%E8%A1%8C%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/e28790d7.html" title="JSP银行管理系统"><img class="cover" src="/../imgs/JSP%E9%93%B6%E8%A1%8C%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/background.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-30</div><div class="title">JSP银行管理系统</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lhr</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/l-204"><i class="fab fa-github"></i><span>关注我的github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/l-204" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1248062965@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">跨过星河迈过月亮, 去迎接更好的自己!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">项目概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">开发流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%92%8C%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">功能和特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">技术架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95"><span class="toc-number">4.1.</span> <span class="toc-text">项目目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config%E5%8C%85"><span class="toc-number">4.2.</span> <span class="toc-text">config包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#models%E5%8C%85"><span class="toc-number">4.3.</span> <span class="toc-text">models包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#routes%E5%8C%85"><span class="toc-number">4.4.</span> <span class="toc-text">routes包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#client%E5%8C%85"><span class="toc-number">4.5.</span> <span class="toc-text">client包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#src%E5%8C%85"><span class="toc-number">4.6.</span> <span class="toc-text">src包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8C%91%E6%88%98"><span class="toc-number">5.</span> <span class="toc-text">关键问题与挑战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90mongoose%E6%8A%A5%E9%94%99%E3%80%91Make-sure-your-current-IP-address-is-on-your-Atlas-cluster%E2%80%98s-IP-whitelist"><span class="toc-number">5.1.</span> <span class="toc-text">【mongoose报错】Make sure your current IP address is on your Atlas cluster‘s IP whitelist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E8%AF%B7%E6%B1%82%E6%8A%A5%E9%94%99%E3%80%91%E5%AE%9E%E7%8E%B0%E5%88%A0%E9%99%A4%E6%8E%A5%E5%8F%A3%E6%97%B6%E5%8F%AF%E4%BB%A5%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E5%88%A0%E9%99%A4%E5%86%85%E5%AE%B9%EF%BC%8C%E5%B9%B6%E6%8A%A5%E9%94%99"><span class="toc-number">5.2.</span> <span class="toc-text">【请求报错】实现删除接口时可以删除数据，但无法显示删除内容，并报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E5%BC%95%E5%85%A5%E6%8A%A5%E9%94%99%E3%80%91%E5%BC%95%E5%85%A5element-ui%E6%97%B6%E6%8A%A5%E9%94%99"><span class="toc-number">5.3.</span> <span class="toc-text">【引入报错】引入element-ui时报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E9%85%8D%E7%BD%AE%E6%8A%A5%E9%94%99%E3%80%91vue3%E6%8A%A5%E9%94%99-Catch-all-routes-%E2%80%9C-%E2%80%9D-must-now-be-defined-using-a-param-with-a-custom-regexp"><span class="toc-number">5.4.</span> <span class="toc-text">【配置报错】vue3报错 Catch all routes (“*”) must now be defined using a param with a custom regexp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E9%85%8D%E7%BD%AE%E6%8A%A5%E9%94%99%E3%80%91%E9%85%8D%E7%BD%AEvue-config-js%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%8C%E6%8C%82%E8%BD%BDaxios%E6%97%B6%E6%8A%A5%E9%94%99"><span class="toc-number">5.5.</span> <span class="toc-text">【配置报错】配置vue.config.js时报错，挂载axios时报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E5%BC%95%E5%85%A5%E6%8A%A5%E9%94%99%E3%80%91Element-ui-NavMenu-%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95-template%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="toc-number">5.6.</span> <span class="toc-text">【引入报错】Element ui NavMenu 导航菜单 template中的内容不显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E6%A0%B7%E5%BC%8F%E6%8A%A5%E9%94%99%E3%80%91%E6%97%A0%E6%B3%95%E6%B8%85%E9%99%A4element%E8%A1%A8%E6%A0%BC%E6%BA%A2%E5%87%BA%E7%9A%84%E7%A9%BA%E7%99%BD%EF%BC%8C%E5%90%8C%E6%97%B6%E8%BF%98%E6%9C%89padding-16px%E7%9A%84%E5%8F%B3%E8%BE%B9%E8%B7%9D%E5%A4%B1%E6%95%88"><span class="toc-number">5.7.</span> <span class="toc-text">【样式报错】无法清除element表格溢出的空白，同时还有padding:16px的右边距失效</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81"><span class="toc-number">6.</span> <span class="toc-text">测试与质量保证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E6%B5%8B%E8%AF%95%EF%BC%9A%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%E8%BF%94%E5%9B%9E%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF"><span class="toc-number">6.1.</span> <span class="toc-text">注册测试：请求成功后返回注册信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E6%B5%8B%E8%AF%95%EF%BC%9A%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%E8%BF%94%E5%9B%9E%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF%E5%92%8Ctoken"><span class="toc-number">6.2.</span> <span class="toc-text">登录测试：请求成功后返回登录信息和token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%B5%8B%E8%AF%95%EF%BC%9A%E6%99%AE%E9%80%9A%E5%91%98%E5%B7%A5%E5%92%8C%E7%AE%A1%E7%90%86%E5%91%98%E9%83%BD%E6%9C%89%E6%9F%A5%E7%9C%8B%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%9D%83%E9%99%90%EF%BC%8C%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%E8%BF%94%E5%9B%9E%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF"><span class="toc-number">6.3.</span> <span class="toc-text">查看个人信息测试：普通员工和管理员都有查看个人信息权限，请求成功后返回个人信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%B5%84%E9%87%91%E4%BF%A1%E6%81%AF%E6%B5%8B%E8%AF%95%EF%BC%9A%E6%99%AE%E9%80%9A%E5%91%98%E5%B7%A5%E5%92%8C%E7%AE%A1%E7%90%86%E5%91%98%E9%83%BD%E6%9C%89%E6%9F%A5%E7%9C%8B%E8%B5%84%E9%87%91%E4%BF%A1%E6%81%AF%E6%9D%83%E9%99%90%EF%BC%8C%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%E8%BF%94%E5%9B%9E%E8%B5%84%E9%87%91%E4%BF%A1%E6%81%AF"><span class="toc-number">6.4.</span> <span class="toc-text">查看资金信息测试：普通员工和管理员都有查看资金信息权限，请求成功后返回资金信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%91%98%E5%B7%A5%E8%BF%9B%E8%A1%8C%E5%A2%9E%E5%88%A0%E6%94%B9%E6%B5%8B%E8%AF%95%EF%BC%9A%E6%99%AE%E9%80%9A%E5%91%98%E5%B7%A5%E6%B2%A1%E6%9C%89%E8%BF%99%E4%BA%9B%E6%9D%83%E9%99%90%EF%BC%8C%E5%9B%A0%E6%AD%A4%E8%AF%B7%E6%B1%82%E5%A4%B1%E8%B4%A5"><span class="toc-number">6.5.</span> <span class="toc-text">普通员工进行增删改测试：普通员工没有这些权限，因此请求失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%E8%BF%9B%E8%A1%8C%E6%B7%BB%E5%8A%A0%E6%B5%8B%E8%AF%95%EF%BC%9A%E7%AE%A1%E7%90%86%E5%91%98%E6%8B%A5%E6%9C%89%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90%EF%BC%8C%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%E8%BF%94%E5%9B%9E%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF"><span class="toc-number">6.6.</span> <span class="toc-text">管理员进行添加测试：管理员拥有添加权限，请求成功后返回添加的商品信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%E8%BF%9B%E8%A1%8C%E5%88%A0%E9%99%A4%E6%B5%8B%E8%AF%95%EF%BC%9A%E7%AE%A1%E7%90%86%E5%91%98%E6%8B%A5%E6%9C%89%E5%88%A0%E9%99%A4%E6%9D%83%E9%99%90%EF%BC%8C%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%E8%BF%94%E5%9B%9E%E5%88%A0%E9%99%A4%E7%9A%84%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF"><span class="toc-number">6.7.</span> <span class="toc-text">管理员进行删除测试：管理员拥有删除权限，请求成功后返回删除的商品信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%BE%91%E6%B5%8B%E8%AF%95%EF%BC%9A%E7%AE%A1%E7%90%86%E5%91%98%E6%8B%A5%E6%9C%89%E7%BC%96%E8%BE%91%E6%9D%83%E9%99%90%EF%BC%8C%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F%E5%90%8E%E8%BF%94%E5%9B%9E%E7%BC%96%E8%BE%91%E5%90%8E%E7%9A%84%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF"><span class="toc-number">6.8.</span> <span class="toc-text">管理员进行编辑测试：管理员拥有编辑权限，请求成功后返回编辑后的商品信息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%90%E6%9E%9C%E4%B8%8E%E6%95%88%E7%9B%8A"><span class="toc-number">7.</span> <span class="toc-text">成果与效益</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1-0"><span class="toc-number">7.1.</span> <span class="toc-text">资金管理系统1.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0"><span class="toc-number">7.2.</span> <span class="toc-text">资金管理系统2.0</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">开发总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B0%8F%E7%A8%8B%E5%BA%8F/9809d611.html" title="云音乐小程序"><img src="/../imgs/%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B0%8F%E7%A8%8B%E5%BA%8F/background.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="云音乐小程序"/></a><div class="content"><a class="title" href="/%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B0%8F%E7%A8%8B%E5%BA%8F/9809d611.html" title="云音乐小程序">云音乐小程序</a><time datetime="2023-09-30T13:51:52.000Z" title="发表于 2023-09-30 21:51:52">2023-09-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8d8ced66.html" title="Vue资金管理系统"><img src="/../imgs/Vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/background.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue资金管理系统"/></a><div class="content"><a class="title" href="/vue%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8d8ced66.html" title="Vue资金管理系统">Vue资金管理系统</a><time datetime="2023-09-30T13:04:19.000Z" title="发表于 2023-09-30 21:04:19">2023-09-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/jsp%E9%93%B6%E8%A1%8C%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/e28790d7.html" title="JSP银行管理系统"><img src="/../imgs/JSP%E9%93%B6%E8%A1%8C%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/background.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JSP银行管理系统"/></a><div class="content"><a class="title" href="/jsp%E9%93%B6%E8%A1%8C%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/e28790d7.html" title="JSP银行管理系统">JSP银行管理系统</a><time datetime="2023-09-30T10:55:45.000Z" title="发表于 2023-09-30 18:55:45">2023-09-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%85%A5%E4%BD%8F%E5%A3%B0%E6%98%8E/c4d8409f.html" title="入住声明"><img src="/../imgs/%E5%85%A5%E4%BD%8F%E5%A3%B0%E6%98%8E/background.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="入住声明"/></a><div class="content"><a class="title" href="/%E5%85%A5%E4%BD%8F%E5%A3%B0%E6%98%8E/c4d8409f.html" title="入住声明">入住声明</a><time datetime="2023-09-11T13:10:35.000Z" title="发表于 2023-09-11 21:10:35">2023-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hello-world/4a17b156.html" title="Hello World">Hello World</a><time datetime="2023-09-10T14:16:00.293Z" title="发表于 2023-09-10 22:16:00">2023-09-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By lhr</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
